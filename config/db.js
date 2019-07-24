@@ -1,10 +1,7 @@
 const pgp = require("pg-promise")();
 const config = {
-  host: "localhost",
-  port: 5432,
-  database: "smarte",
-  user: process.env.DB_USER,
-  password: process.env.DB_PW
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
 };
 
 let db;
