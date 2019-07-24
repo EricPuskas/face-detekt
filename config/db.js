@@ -1,8 +1,19 @@
 const pgp = require("pg-promise")();
-const config = {
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-};
+let config;
+if (process.env.NODE_ENV === "production") {
+  config = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  };
+} else {
+  config = {
+    host: "localhost",
+    port: 5432,
+    database: "smarte",
+    user: process.env.DB_USER,
+    password: process.env.DB_PW
+  };
+}
 
 let db;
 const connectDB = async () => {
