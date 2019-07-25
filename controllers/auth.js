@@ -36,11 +36,28 @@ exports.registerUser = async (req, res) => {
         "INSERT INTO login(hash,email) VALUES($1, $2) RETURNING email",
         [hash, email]
       );
-      let data = await db.one(
+      await db.one(
         "INSERT INTO users(email, name, joined) VALUES($1, $2, $3) RETURNING *",
         [email, name, joined]
       );
-      res.json(data);
+
+      let foundUser = await db.one("SELECT * FROM users WHERE email = $1", [
+        email
+      ]);
+
+      const payload = {
+        id: foundUser.id,
+        name: foundUser.name,
+        email: foundUser.email
+      }; // Create JWT Payload
+
+      // Sign Token                   // Expires in 1 day
+      jwt.sign(payload, SECRET_KEY, { expiresIn: 86400 }, (err, token) => {
+        res.json({
+          success: true,
+          token: `Bearer ${token}`
+        });
+      });
     }
   } catch (err) {
     return res.json(err);
@@ -76,13 +93,14 @@ exports.loginUser = async (req, res) => {
           const payload = {
             id: foundUser.id,
             name: foundUser.name,
-            email: foundUser.email,
-            entries: foundUser.entries
+            email: foundUser.email
           }; // Create JWT Payload
           // Sign Token                   // Expires in 1 day
           jwt.sign(payload, SECRET_KEY, { expiresIn: 86400 }, (err, token) => {
-            console.log(payload);
-            res.json(payload);
+            res.json({
+              success: true,
+              token: `Bearer ${token}`
+            });
           });
         } else {
           errors.invalid_auth = "Invalid Credentials";
