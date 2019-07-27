@@ -16,19 +16,20 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case SET_CURRENT_USER:
       return {
         ...state,
         loading: false,
         master_loader: false,
-        isAuthenticated: !isEmpty(action.payload),
-        user: action.payload
+        isAuthenticated: !isEmpty(payload),
+        user: payload
       };
     case GET_PROFILE:
       return {
         ...state,
-        user: action.payload
+        user: { ...state.user, ...payload }
       };
     case LOADING:
       return {

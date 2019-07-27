@@ -3,6 +3,7 @@ const calculateBoxLocation = (data, id) => {
   const image = document.getElementById(id);
   const width = Number(image.width);
   const height = Number(image.height);
+  console.log(width, height);
   let box = {
     leftCol: clarifaiFace.left_col * width,
     topRow: clarifaiFace.top_row * height,

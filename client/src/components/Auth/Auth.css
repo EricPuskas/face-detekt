@@ -1,0 +1,206 @@
+.auth-container {
+  background: #293339;
+  width: 100%;
+  height: calc(100vh - 133px);
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto";
+  align-items: flex-start;
+  padding: 0;
+}
+
+.auth-footer {
+  color: #fff;
+  position: absolute;
+  top: 94%;
+  width: 100%;
+  text-align: center;
+  font-size: 90%;
+  background: inherit;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+  z-index: 10000;
+  width: 100%;
+  text-align: center;
+  padding-top: 1%;
+}
+
+.login-form h1 {
+  color: #fff;
+  padding: 1rem;
+}
+.login-form input:-webkit-autofill,
+.login-form input:-webkit-autofill:hover,
+.login-form input:-webkit-autofill:focus,
+.login-form input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #17252a inset !important;
+  -webkit-box-shadow: 0 0 0 30px #17252a inset !important;
+}
+
+/*Change text in autofill textbox*/
+.login-form input:-webkit-autofill {
+  -webkit-text-fill-color: #fff !important;
+}
+
+.login-form img {
+  max-width: 25px;
+}
+
+.login-form .form-control {
+  background: #17252a none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 3rem;
+}
+
+.login-form .login-btn-group {
+  margin-top: 2.2rem;
+}
+
+.login-form .form-control:focus {
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.37);
+}
+
+.login-form .btn.btn-primary {
+  padding: 0.2rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  border: 1px solid #17252a;
+  background-color: #17252a;
+}
+
+.login-form .btn-primary:not(:disabled):not(.disabled):active:focus,
+.login-form .btn.btn-primary:focus,
+.login-form .btn.btn-primary:active,
+.login-form .btn.btn-primary:hover {
+  border: 1px solid #17252a;
+  outline: none;
+  box-shadow: none;
+  background-color: #254049;
+}
+
+.main-div {
+  box-shadow: -3px 3px 44px -34px rgba(0, 0, 0, 1);
+  background: #37474f;
+  margin: 0 auto;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.main-div label {
+  text-align: start !important;
+  display: flex;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.main-div form {
+  width: 100%;
+}
+
+.input-group-prepend span {
+  background: #17252a;
+  color: #fff;
+}
+
+.invalid-feedback {
+  font-size: 90%;
+  margin-top: 0.4rem;
+  color: #dc3545;
+  text-align: center;
+}
+
+.invalid-feedback.fixed {
+  position: absolute;
+  text-align: end;
+  top: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .auth-container {
+    align-items: center;
+  }
+  .login-form {
+    padding: 0;
+    padding-top: 0.5rem;
+    width: 100%;
+  }
+
+  .login-form .form-control {
+    font-size: 1rem;
+    line-height: 3rem;
+    height: 3rem !important;
+  }
+
+  .login-form .btn.btn-primary {
+    padding: 0.5rem 2rem;
+    margin: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .main-div {
+    box-shadow: none;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .main-div label {
+    padding: 0.2rem 0 0 0.1rem;
+    margin-top: 2rem;
+  }
+
+  .main-div form {
+    width: 100%;
+  }
+
+  .invalid-feedback {
+    display: none;
+    width: 100%;
+    top: 100%;
+    color: #dc3545;
+    right: 0;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .auth-container {
+    align-items: center;
+    margin-top: 3.5rem;
+    margin-bottom: 3rem;
+    padding: 0rem;
+    height: auto;
+  }
+  .login-form {
+    padding: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  .main-div {
+    box-shadow: none;
+    margin: 0 auto;
+    border-radius: 0px;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  .main-div form {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+}

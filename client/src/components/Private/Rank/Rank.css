@@ -1,0 +1,22 @@
+.Rank {
+  background-color: #37474f;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 0 2rem;
+}
+.Rank span {
+  color: #d56c2c;
+  font-weight: bold;
+  font-size: 2.4rem;
+  padding: 0 1rem;
+}
+
+.Rank h2 {
+  font-size: 2rem;
+  background-color: #293339;
+  padding: 1rem;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

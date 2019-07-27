@@ -1,12 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./Landing.css";
+import Main from "./Main";
+import Ranking from "../../Private/Ranking/Ranking";
 
 const Landing = () => {
+  document.title = "GetFace - Home";
   return (
-    <div>
-      <h1> Landing Page</h1>
-      <Link to="/auth/login"> Login </Link>
-      <Link to="/auth/register"> Register </Link>
+    <div className="Landing center">
+      <div className="row center">
+        <div className="col-xl-7 col-12">
+          <Main />
+        </div>
+        <div className="col-xl-4 col-12">
+          <Ranking />
+        </div>
+      </div>
     </div>
   );
 };

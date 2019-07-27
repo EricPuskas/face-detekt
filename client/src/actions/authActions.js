@@ -31,36 +31,31 @@ export const registerUser = userData => async dispatch => {
       type: GET_ERRORS,
       payload: err.response.data
     });
+    dispatch(StopAuthLoading());
   }
 };
 
 // Login - Get user token
-export const loginUser = userData => dispatch => {
-  dispatch(AuthLoading());
-  axios
-    .post("/api/auth/login", userData)
-    .then(res =>
-      setTimeout(() => {
-        // Save to localStorage
-        const { token } = res.data;
-        localStorage.setItem("jwtToken", token);
-        // Set Token to Auth header
-        setAuthToken(token);
-        // Decode Token to get user data
-        const decoded = jwt_decode(token);
-        // Set current user
-        dispatch(setCurrentUser(decoded));
-      }, 400)
-    )
-    .catch(err =>
-      setTimeout(() => {
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data
-        });
-        dispatch(StopAuthLoading());
-      }, 400)
-    );
+export const loginUser = userData => async dispatch => {
+  try {
+    dispatch(AuthLoading());
+    let res = await axios.post("/api/auth/login", userData);
+    // Save to localStorage
+    const { token } = res.data;
+    localStorage.setItem("jwtToken", token);
+    // Set Token to Auth header
+    setAuthToken(token);
+    // Decode Token to get user data
+    const decoded = jwt_decode(token);
+    // Set current user
+    dispatch(setCurrentUser(decoded));
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+    dispatch(StopAuthLoading());
+  }
 };
 
 // Get Profile

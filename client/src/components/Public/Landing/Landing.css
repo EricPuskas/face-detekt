@@ -1,0 +1,229 @@
+.Landing {
+  background: #293339;
+  margin: 5rem 0;
+  padding: 2rem 0rem;
+  width: 100%;
+  height: auto;
+}
+
+.Landing-img-container {
+  border: 20px solid #90a4ae;
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+.Landing-main-avatar {
+  border-radius: 0px;
+  display: inline-block;
+  max-width: 100%;
+  width: 350px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.Landing-description {
+  align-items: center;
+  display: flex;
+  text-align: start;
+  margin-top: 5rem;
+}
+
+.Landing-btn-container {
+  margin-left: 1rem;
+  margin-top: 3rem;
+}
+.Landing h1 {
+  color: #fff;
+  font-family: "Bungee";
+  margin: 1rem 0;
+  display: inline-block;
+  justify-content: start;
+  font-size: 2rem;
+}
+
+.project-description {
+  padding: 1rem 0rem;
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 1.5rem;
+}
+
+.project-description p {
+  padding: 0 1rem;
+}
+.Landing-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  margin-top: 4rem;
+  padding: 0 2rem 0 0;
+  align-items: center;
+  text-align: center;
+}
+
+.Landing-btn {
+  color: #fff;
+  letter-spacing: 0.1rem;
+  background-color: #d56c2c;
+  padding: 0.6rem 2rem;
+  margin: 1rem;
+  width: 100%;
+  font-size: 1.6rem;
+  text-decoration: none;
+  max-width: 390px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Landing-btn:hover {
+  background-color: #aa4100;
+  color: #fff;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .Landing p {
+    padding: 0 3rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .Landing-img-default {
+    width: 430px;
+  }
+}
+@media only screen and (max-width: 823px) {
+  .Landing {
+    padding: 0 0 2rem 0;
+    width: 100%;
+    height: auto;
+    margin: 3rem 0 2rem 0;
+    max-height: none;
+  }
+  .Landing h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+  .Landing h2 {
+    padding: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1366px) {
+  .project-description p {
+    padding: 0;
+  }
+  .Landing-description {
+    margin-top: 0;
+  }
+  .project-description {
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+  .Landing {
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .Landing-avatar {
+    margin: 2rem 0 0;
+    width: 300px;
+  }
+  .Landing h1 {
+    font-size: 2.3rem;
+    margin: 1rem;
+  }
+  .Landing-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: 3rem;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Landing-btn-container {
+    margin: 0;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Landing-btn {
+    padding: 0.6rem;
+    margin: 0rem;
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+  .Landing {
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 413px) and (max-width: 426px) {
+  .Landing-avatar {
+    margin: 0rem;
+  }
+  .Landing h1 {
+    font-size: 2.6rem;
+    margin: 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .Landing {
+    height: auto;
+  }
+  .Landing-avatar {
+    margin: 0;
+  }
+  .Landing h1 {
+    font-size: 2.2rem;
+    margin: 1rem 0;
+  }
+  .Landing-btn {
+    padding: 0.6rem 1.3rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 320px) {
+  .Landing h1 {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+}
+@media only screen and (min-width: 360px) and (max-width: 376px) {
+  .Landing-main h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media only screen and (min-width: 411px) and (max-width: 414px) {
+  .Landing-main h1 {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1366px) {
+  .Landing-main-avatar {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 1530px) and (max-width: 1600px) {
+  .Landing h1 {
+    font-size: 1.9rem;
+  }
+  .Landing {
+    margin: 2rem 0;
+  }
+}

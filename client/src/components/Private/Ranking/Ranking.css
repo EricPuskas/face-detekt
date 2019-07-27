@@ -1,0 +1,108 @@
+.Ranking {
+  font-family: "Bungee";
+  padding: 1rem;
+  background-color: #37474f;
+  border-radius: 20px;
+  margin: 0;
+}
+
+.Ranking ul {
+  text-decoration: none;
+  list-style: none;
+  text-align: start;
+  padding: 0;
+  color: #7fb0ce;
+  font-size: 1.2rem;
+}
+
+.Ranking li {
+  margin: 0.25rem 0;
+}
+
+#score {
+  text-align: end;
+}
+
+.Ranking-field {
+  text-align: center;
+  color: #ffffff;
+  background-color: #293339;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Ranking-field h2 {
+  float: left;
+  text-align: start;
+  font-size: 1.6rem;
+}
+
+.Ranking-field h2:last-child {
+  text-align: end;
+  float: right;
+}
+
+.Ranking .first {
+  color: rgb(255, 217, 0);
+}
+
+.Ranking .second {
+  color: #fff;
+}
+
+.Ranking .third {
+  color: rgb(255, 134, 0);
+}
+
+.Ranking-how {
+  font-family: "Bungee";
+  padding: 1rem;
+  background-color: #37474f;
+  border-radius: 20px;
+  margin-top: 1rem;
+}
+
+.Ranking-how p {
+  font-family: "Roboto";
+  font-size: 1.3rem;
+}
+
+.Dashboard .Ranking h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.Dashboard .Ranking-how h1 {
+  font-size: 3rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1366px) {
+  .Ranking {
+    font-family: "Bungee";
+    padding: 0rem;
+    background-color: #37474f;
+    border-radius: 0px;
+    margin: 5rem 0;
+  }
+  .Ranking-field {
+    text-align: center;
+    color: #ffffff;
+    background-color: #293339;
+    padding: 0;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Ranking ul {
+    text-decoration: none;
+    list-style: none;
+    text-align: start;
+    padding: 0;
+    color: #7fb0ce;
+    font-size: 1.1rem;
+  }
+}

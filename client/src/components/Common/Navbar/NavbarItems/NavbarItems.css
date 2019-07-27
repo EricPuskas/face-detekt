@@ -1,0 +1,82 @@
+.NavbarItems {
+  display: flex;
+}
+
+.NavbarItems .is-active {
+  color: #fff;
+  background-color: transparent;
+}
+
+.NavbarItems li {
+  display: flex;
+  align-items: center;
+}
+.NavbarItems li,
+.NavbarItems a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.NavbarItems i {
+  margin-right: 0.3rem;
+}
+.NavbarItems a {
+  padding: 0 0.75rem;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.NavbarItems a:hover,
+.NavbarItems a:focus,
+.NavbarItems a:active {
+  color: #ff6100;
+  outline: none;
+  background-color: transparent;
+}
+
+.NavbarItems ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.NavbarItems li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+.NavbarItems li:hover,
+.NavbarItems li:active,
+.NavbarItems li:focus {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: transparent;
+}
+
+.spacer {
+  -webkit-flex: 1 1;
+  flex: 1 1;
+}
+
+@media only screen and (max-width: 823px) {
+  .NavbarItems {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .NavbarItems {
+    padding-left: 3rem;
+  }
+}

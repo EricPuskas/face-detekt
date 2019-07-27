@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Logo from "../Logo/Logo";
-import Navigation from "../Navigation/Navigation";
+// Hooks
+import useInputState from "../../../hooks/useInputState";
+// Utils
+import calculateBoxLocation from "../../../utils/calculateBoxLocation";
+// Actions
+import { getProfile } from "../../../actions/authActions";
+import { detectFaces } from "../../../actions/imageActions";
+// Components
 import ImageLinkForm from "../ImageLinkForm/ImageLinkForm";
+import Ranking from "../Ranking/Ranking";
 import Rank from "../Rank/Rank";
 import FaceRecognition from "../FaceRecognition/FaceRecognition";
-import useInputState from "../../../hooks/useInputState";
-// Actions
-import { logoutUser, getProfile } from "../../../actions/authActions";
-import { detectFaces } from "../../../actions/imageActions";
-import calculateBoxLocation from "../../../utils/calculateBoxLocation";
+import HowItWorks from "./HowItWorks";
+// CSS
+import "./Dashboard.css";
 
-const Dashboard = ({ getProfile, detectFaces, image, auth, logoutUser }) => {
-  const { data } = image;
+const Dashboard = ({ getProfile, detectFaces, image, auth }) => {
   const [input, setInput, resetInput] = useInputState("");
   const [imgUrl, setImgUrl] = useState("");
   const [box, setBox] = useState("");
+
   const { user } = auth;
+  const { data } = image;
+
+  document.title = `GetFace - Welcome ${user.name}`;
+
   const handleSubmit = e => {
     e.preventDefault();
     setImgUrl(input);
     let data = { input };
-    resetInput();
     detectFaces(user.id, data);
+    resetInput();
   };
 
   const displayFaceBox = box => {
@@ -41,16 +50,30 @@ const Dashboard = ({ getProfile, detectFaces, image, auth, logoutUser }) => {
   }, [data, getProfile, user.id]);
 
   return (
-    <div className="App">
-      <Navigation logoutUser={logoutUser} />
-      <Logo />
-      <Rank name={user.name} entries={user.entries} />
-      <ImageLinkForm
-        setInput={setInput}
-        input={input}
-        handleSubmit={handleSubmit}
-      />
-      <FaceRecognition box={box} imageUrl={imgUrl} />
+    <div className="Dashboard center">
+      <div className="row">
+        <div className="col-xl-4 col-12">
+          <Ranking />
+          <HowItWorks />
+        </div>
+        <div className="col-xl-8 col-12">
+          <div className="row">
+            <div className="Dashboard-main">
+              <div className="col-12">
+                <Rank name={user.name} entries={user.entries} />
+                <ImageLinkForm
+                  setInput={setInput}
+                  input={input}
+                  handleSubmit={handleSubmit}
+                />
+              </div>
+              <div className="col-12">
+                <FaceRecognition box={box} imageUrl={imgUrl} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -62,5 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser, detectFaces, getProfile }
+  { detectFaces, getProfile }
 )(Dashboard);

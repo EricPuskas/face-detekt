@@ -7,10 +7,11 @@ import {
   registerUser,
   clearErrors
 } from "../../actions/authActions";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
+import Login from "./Login";
+import Register from "./Register";
 import NotFound from "../Common/NotFound";
-import Route from "../Common/RouteProps";
+import Route from "../Common/Route"; // Route with props
+import "./Auth.css";
 
 const AuthRoutes = ({ loginUser, registerUser, clearErrors, auth, errors }) => {
   const { error } = errors;
@@ -22,27 +23,29 @@ const AuthRoutes = ({ loginUser, registerUser, clearErrors, auth, errors }) => {
   }
 
   return (
-    <Switch>
-      <Route
-        exact
-        path="/auth/login"
-        error={error}
-        login={loginUser}
-        clearErrors={clearErrors}
-        loading={loading}
-        component={Login}
-      />
-      <Route
-        exact
-        path="/auth/register"
-        error={error}
-        register={registerUser}
-        clearErrors={clearErrors}
-        loading={loading}
-        component={Register}
-      />
-      <Route component={NotFound} />
-    </Switch>
+    <div className="auth-container">
+      <Switch>
+        <Route
+          exact
+          path="/login"
+          error={error}
+          login={loginUser}
+          clearErrors={clearErrors}
+          loading={loading}
+          component={Login}
+        />
+        <Route
+          exact
+          path="/register"
+          error={error}
+          register={registerUser}
+          clearErrors={clearErrors}
+          loading={loading}
+          component={Register}
+        />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
   );
 };
 

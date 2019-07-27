@@ -5,10 +5,11 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case DETECT_FACES:
       return {
-        data: action.payload
+        data: payload
       };
     default:
       return state;

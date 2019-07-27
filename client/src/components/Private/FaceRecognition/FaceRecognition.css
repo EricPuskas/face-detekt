@@ -1,3 +1,17 @@
+.FaceRecognition {
+  margin: 0 auto;
+}
+.FaceRecognition-img-container {
+  margin-top: 2rem;
+  position: absolute;
+  text-align: center;
+}
+.FaceRecognition-img-container img {
+  max-width: 100%;
+  border-style: none;
+  width: 500px;
+}
+
 .bounding-box {
   position: absolute;
   box-shadow: 0 0 0 3px #149df2 inset;
