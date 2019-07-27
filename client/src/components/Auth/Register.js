@@ -14,7 +14,7 @@ const Register = ({ error, register, clearErrors, loading }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    register({ name, email, password });
+    register({ name, email, password, password_confirm });
   };
 
   useEffect(() => {
