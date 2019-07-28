@@ -7,7 +7,6 @@ const compression = require("compression");
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
-const morgan = require("morgan");
 const time = 2500000000; // 1 month
 
 const auth = require("./routes/auth");
@@ -44,8 +43,6 @@ if (NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-} else {
-  app.use(morgan("combined"));
 }
 
 // Listen to Server
