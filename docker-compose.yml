@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  # Backend API
+  server:
+    container_name: backend
+    build: ./
+    command: npm start
+    working_dir: /usr/src/get-face
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dadada2233
+      POSTGRES_DB: smarte
+      POSTGRES_HOST: postgres
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/get-face
+
+  # Client
+  client:
+    container_name: client
+    build: ./client
+    command: npm start
+    working_dir: /usr/src/get-face/client
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./client:/usr/src/get-face/client"
+
+  # Postgres
+  postgres:
+    container_name: database
+    build: ./postgres
+    environment:
+      POSTGRES_USER: "Your username"
+      POSTGRES_PASSWORD: "Your Password"
+      POSTGRES_DB: "Your DB Name"
+      POSTGRES_HOST: postgres
+    ports:
+      - "5432"

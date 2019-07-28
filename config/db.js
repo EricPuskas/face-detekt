@@ -7,14 +7,13 @@ if (process.env.NODE_ENV === "production") {
   };
 } else {
   config = {
-    host: "localhost",
-    port: 5432,
-    database: "smarte",
-    user: process.env.DB_USER,
-    password: process.env.DB_PW
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DB,
+    user: process.env.POSTGRES_USER,
+    port: process.env.POSTGRES_PORT,
+    password: process.env.POSTGRES_PASSWORD
   };
 }
-
 let db;
 const connectDB = async () => {
   try {

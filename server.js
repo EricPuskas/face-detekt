@@ -7,6 +7,7 @@ const compression = require("compression");
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
+const morgan = require("morgan");
 const time = 2500000000; // 1 month
 
 const auth = require("./routes/auth");
@@ -14,6 +15,7 @@ const profile = require("./routes/profile");
 const image = require("./routes/image");
 
 const app = express();
+app.use(morgan("combined"));
 app.use(helmet());
 app.use(compression());
 app.use(cors());
