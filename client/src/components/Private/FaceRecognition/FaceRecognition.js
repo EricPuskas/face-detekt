@@ -1,37 +1,42 @@
 import React from "react";
-import Loader from "../../../assets/img/rolling.svg";
 import "./FaceRecognition.css";
 
-const FaceRecognition = ({ error, imageUrl, boxes, loading }) => {
+const FaceRecognition = ({ error, imageUrl, boxes }) => {
   return (
     <div className="FaceRecognition center">
       <div className="FaceRecognition-img-container">
-        <img id="inputimage" alt="" src={imageUrl} width="500px" heigh="auto" />
-        {loading ? (
+        {error ? (
           <img
-            src={Loader}
-            alt="Loading..."
-            className="FaceRecognition-loader"
+            alt="Error"
+            src="https://www.hostinger.in/assets/images/404-3a53e76ef1.png"
+            width="500px"
+            height="auto"
           />
         ) : (
-          <>
-            {!error &&
-              boxes.map(box => {
-                return (
-                  <div
-                    key={box.topRow}
-                    className="bounding-box"
-                    style={{
-                      top: box.topRow,
-                      right: box.rightCol,
-                      bottom: box.bottomRow,
-                      left: box.leftCol
-                    }}
-                  />
-                );
-              })}
-          </>
+          <img
+            id="inputimage"
+            alt=""
+            src={imageUrl}
+            width="500px"
+            heigh="auto"
+          />
         )}
+        {error
+          ? null
+          : boxes.map(box => {
+              return (
+                <div
+                  key={box.topRow}
+                  className="bounding-box"
+                  style={{
+                    top: box.topRow,
+                    right: box.rightCol,
+                    bottom: box.bottomRow,
+                    left: box.leftCol
+                  }}
+                />
+              );
+            })}
       </div>
     </div>
   );

@@ -36,6 +36,7 @@ const Dashboard = ({
 
   const handleSubmit = e => {
     e.preventDefault();
+    setBoxes([]);
     clearErrors();
     setImgUrl(input);
     let data = { input };
@@ -62,12 +63,6 @@ const Dashboard = ({
     }
     // eslint-disable-next-line
   }, [data, getProfile, user.id]);
-
-  useEffect(() => {
-    if (error)
-      setImgUrl("https://www.hostinger.in/assets/images/404-3a53e76ef1.png");
-  }, [error]);
-
   return (
     <div className="Dashboard center">
       <div className="row">
@@ -92,7 +87,6 @@ const Dashboard = ({
                 <FaceRecognition
                   boxes={boxes}
                   imageUrl={imgUrl}
-                  loading={loading}
                   error={error.image || error.invalid_input}
                 />
               </div>

@@ -6,9 +6,7 @@ module.exports = function validateImageInput(data) {
 
   data.input = !isEmpty(data.input) ? data.input : "";
 
-  let ImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
-
-  if (!data.input.match(ImageUrl) || data.input.includes("data:image/"))
+  if (data.input.includes("data:image/"))
     errors.image = "Invalid URL provided.";
 
   if (Validator.isEmpty(data.input)) {
