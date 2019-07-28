@@ -39,7 +39,8 @@ exports.detectFaces = async (req, res) => {
       return res.status(400).json(errors);
     }
   } catch (error) {
-    console.log(error);
-    return res.status(400).json(error);
+    const errors = {};
+    errors.invalid_input = "Invalid URL provided.";
+    return res.status(400).json(errors);
   }
 };
