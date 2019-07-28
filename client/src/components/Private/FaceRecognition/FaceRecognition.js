@@ -15,20 +15,21 @@ const FaceRecognition = ({ error, imageUrl, boxes, loading }) => {
           />
         ) : (
           <>
-            {boxes.map(box => {
-              return (
-                <div
-                  key={box.topRow}
-                  className="bounding-box"
-                  style={{
-                    top: box.topRow,
-                    right: box.rightCol,
-                    bottom: box.bottomRow,
-                    left: box.leftCol
-                  }}
-                />
-              );
-            })}
+            {!error &&
+              boxes.map(box => {
+                return (
+                  <div
+                    key={box.topRow}
+                    className="bounding-box"
+                    style={{
+                      top: box.topRow,
+                      right: box.rightCol,
+                      bottom: box.bottomRow,
+                      left: box.leftCol
+                    }}
+                  />
+                );
+              })}
           </>
         )}
       </div>
