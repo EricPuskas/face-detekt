@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 // Actions
 import { getRanking } from "../../../actions/authActions";
 import isEmpty from "../../../utils/isEmpty";
+import uuid from "uuid/v4";
 import "./Ranking.css";
 
 const Ranking = ({ auth, getRanking }) => {
@@ -14,8 +15,8 @@ const Ranking = ({ auth, getRanking }) => {
   }, [ranking, getRanking]);
 
   if (!isEmpty(ranking)) {
-    names = ranking.map(user => <li key={user.id}>{user.name}</li>);
-    scores = ranking.map(score => <li key={score.id}>{score.entries}</li>);
+    names = ranking.map(user => <li key={uuid()}>{user.name}</li>);
+    scores = ranking.map(score => <li key={uuid()}>{score.entries}</li>);
   }
   return (
     <>

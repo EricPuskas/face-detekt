@@ -1,5 +1,6 @@
 import React from "react";
 import "./FaceRecognition.css";
+import uuid from "uuid/v4";
 
 const FaceRecognition = ({ error, imageUrl, boxes }) => {
   return (
@@ -26,7 +27,7 @@ const FaceRecognition = ({ error, imageUrl, boxes }) => {
           : boxes.map(box => {
               return (
                 <div
-                  key={box.topRow}
+                  key={uuid()}
                   className="bounding-box"
                   style={{
                     top: box.topRow,
