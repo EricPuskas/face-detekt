@@ -19,6 +19,9 @@ const Input = ({
     "is-invalid": error
   });
 
+  let inputGroupText = classnames("input-group-text", {
+    "is-invalid": error
+  });
   let errorClasses = classnames("invalid-feedback", {
     fixed: error_fixed
   });
@@ -27,7 +30,7 @@ const Input = ({
     <div className={`input-group mb-${mb}`}>
       {icon && (
         <div className="input-group-prepend">
-          <span className="input-group-text">
+          <span className={inputGroupText}>
             <i className={icon} />
           </span>
         </div>

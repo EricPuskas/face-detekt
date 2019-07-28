@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getProfile } = require("../controllers/profile");
+const { getProfile, getRanking } = require("../controllers/profile");
 const passport = require("passport");
 
 // @route   GET api/profile/:id
@@ -11,5 +11,10 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   getProfile
 );
+
+// @route   GET api/profile/ranking/:top
+// @desc    GET RANKING
+// @access  Public
+router.get("/ranking/:top", getRanking);
 
 module.exports = router;

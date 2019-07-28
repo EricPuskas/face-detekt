@@ -20,3 +20,7 @@
   justify-content: center;
   cursor: pointer;
 }
+
+.FaceRecognition-img-container .FaceRecognition-loader {
+  max-width: 100px;
+}

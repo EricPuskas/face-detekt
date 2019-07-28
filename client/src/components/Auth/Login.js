@@ -48,9 +48,14 @@ const Login = ({ error, login, clearErrors, loading }) => {
             value={password}
             autoComplete="new-password"
             onChange={setPassword}
-            error={error.password || error.error_message || error.invalid_auth}
+            error={error.password || error.error_message}
             error_fixed
           />
+          {error && (
+            <div className="invalid-feedback" style={{ textAlign: "center" }}>
+              {error.invalid_auth}
+            </div>
+          )}
           <div className="login-btn-group">
             <button type="submit" className="btn btn-primary">
               {loading ? <img src={loader} alt="Loading..." /> : "Login"}

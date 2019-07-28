@@ -5,6 +5,7 @@ import {
   GET_ERRORS,
   SET_CURRENT_USER,
   GET_PROFILE,
+  GET_RANKING,
   CLEAR_ERRORS,
   AUTH_LOADING,
   LOADING,
@@ -64,6 +65,22 @@ export const getProfile = id => async dispatch => {
     let res = await axios.get(`/api/profile/${id}`);
     dispatch({
       type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
+};
+
+// Get Ranking
+export const getRanking = top => async dispatch => {
+  try {
+    let res = await axios.get(`/api/profile/ranking/${top}`);
+    dispatch({
+      type: GET_RANKING,
       payload: res.data
     });
   } catch (err) {

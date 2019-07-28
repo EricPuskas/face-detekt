@@ -78,38 +78,44 @@ exports.loginUser = async (req, res) => {
     let foundUser = await db.one("SELECT * FROM users WHERE email = $1", [
       email
     ]);
-    // Find user by email
-    db.one("SELECT * FROM login WHERE email = $1", [email]).then(user => {
-      // Check for user
-      if (!user.id) {
-        errors.invalid_auth = "Invalid Credentials";
-        return res.status(404).json(errors);
-      }
-
-      // Check Password
-      bcrypt.compare(password, user.hash).then(isMatch => {
-        if (isMatch) {
-          // User Matched
-          const payload = {
-            id: foundUser.id,
-            name: foundUser.name,
-            email: foundUser.email
-          }; // Create JWT Payload
-          // Sign Token                   // Expires in 1 day
-          jwt.sign(payload, SECRET_KEY, { expiresIn: 86400 }, (err, token) => {
-            res.json({
-              success: true,
-              token: `Bearer ${token}`
-            });
-          });
-        } else {
-          errors.invalid_auth = "Invalid Credentials";
-          return res.status(400).json(errors);
-        }
+    if (!foundUser.id) {
+      errors.invalid_auth = "Invalid Credentials";
+      return res.status(404).json(errors);
+    } else {
+      // Find user by email
+      db.one("SELECT * FROM login WHERE email = $1", [email]).then(user => {
+        // Check Password
+        bcrypt.compare(password, user.hash).then(isMatch => {
+          if (isMatch) {
+            // User Matched
+            const payload = {
+              id: foundUser.id,
+              name: foundUser.name,
+              email: foundUser.email
+            }; // Create JWT Payload
+            // Sign Token                   // Expires in 1 day
+            jwt.sign(
+              payload,
+              SECRET_KEY,
+              { expiresIn: 86400 },
+              (err, token) => {
+                res.json({
+                  success: true,
+                  token: `Bearer ${token}`
+                });
+              }
+            );
+          } else {
+            errors.invalid_auth = "Invalid Credentials";
+            return res.status(400).json(errors);
+          }
+        });
       });
-    });
+    }
   } catch (err) {
-    res.json(err);
+    const errors = {};
+    errors.invalid_auth = "Invalid Credentials";
+    return res.status(404).json(errors);
   }
 };
 

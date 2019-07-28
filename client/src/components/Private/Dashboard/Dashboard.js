@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 // Hooks
 import useInputState from "../../../hooks/useInputState";
 // Utils
-import calculateBoxLocation from "../../../utils/calculateBoxLocation";
+import calculateBoxLocations from "../../../utils/calculateBoxLocations";
 // Actions
-import { getProfile } from "../../../actions/authActions";
-import { detectFaces } from "../../../actions/imageActions";
+import { getProfile, getRanking } from "../../../actions/authActions";
+import { detectFaces, clearErrors } from "../../../actions/imageActions";
 // Components
 import ImageLinkForm from "../ImageLinkForm/ImageLinkForm";
 import Ranking from "../Ranking/Ranking";
@@ -16,26 +16,38 @@ import HowItWorks from "./HowItWorks";
 // CSS
 import "./Dashboard.css";
 
-const Dashboard = ({ getProfile, detectFaces, image, auth }) => {
+const Dashboard = ({
+  errors,
+  clearErrors,
+  getProfile,
+  getRanking,
+  detectFaces,
+  image,
+  auth
+}) => {
   const [input, setInput, resetInput] = useInputState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [box, setBox] = useState("");
-
+  const [boxes, setBoxes] = useState([]);
+  const { error } = errors;
   const { user } = auth;
-  const { data } = image;
+  const { data, loading } = image;
 
   document.title = `GetFace - Welcome ${user.name}`;
 
   const handleSubmit = e => {
     e.preventDefault();
+    clearErrors();
     setImgUrl(input);
     let data = { input };
     detectFaces(user.id, data);
     resetInput();
   };
 
-  const displayFaceBox = box => {
-    setBox(box);
+  const displayFaceBoxes = boxes => {
+    if (boxes) {
+      setBoxes(boxes);
+      clearErrors();
+    }
   };
 
   useEffect(() => {
@@ -44,10 +56,17 @@ const Dashboard = ({ getProfile, detectFaces, image, auth }) => {
 
   useEffect(() => {
     if (data.outputs && user.id) {
-      displayFaceBox(calculateBoxLocation(data, "inputimage"));
+      displayFaceBoxes(calculateBoxLocations(data, "inputimage"));
       getProfile(user.id);
+      getRanking(10);
     }
+    // eslint-disable-next-line
   }, [data, getProfile, user.id]);
+
+  useEffect(() => {
+    if (error)
+      setImgUrl("https://www.hostinger.in/assets/images/404-3a53e76ef1.png");
+  }, [error]);
 
   return (
     <div className="Dashboard center">
@@ -65,10 +84,17 @@ const Dashboard = ({ getProfile, detectFaces, image, auth }) => {
                   setInput={setInput}
                   input={input}
                   handleSubmit={handleSubmit}
+                  loading={loading}
+                  error={error.image || error.invalid_input}
                 />
               </div>
               <div className="col-12">
-                <FaceRecognition box={box} imageUrl={imgUrl} />
+                <FaceRecognition
+                  boxes={boxes}
+                  imageUrl={imgUrl}
+                  loading={loading}
+                  error={error.image || error.invalid_input}
+                />
               </div>
             </div>
           </div>
@@ -80,10 +106,11 @@ const Dashboard = ({ getProfile, detectFaces, image, auth }) => {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  image: state.image
+  image: state.image,
+  errors: state.errors
 });
 
 export default connect(
   mapStateToProps,
-  { detectFaces, getProfile }
+  { detectFaces, getProfile, getRanking, clearErrors }
 )(Dashboard);

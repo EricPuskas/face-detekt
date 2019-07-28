@@ -4,7 +4,8 @@ import {
   STOP_LOADING,
   AUTH_LOADING,
   STOP_AUTH_LOADING,
-  GET_PROFILE
+  GET_PROFILE,
+  GET_RANKING
 } from "../actions/types";
 import isEmpty from "../utils/isEmpty";
 
@@ -12,7 +13,8 @@ const initialState = {
   isAuthenticated: false,
   loading: false,
   master_loader: false,
-  user: {}
+  user: {},
+  ranking: []
 };
 
 export default function(state = initialState, action) {
@@ -30,6 +32,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         user: { ...state.user, ...payload }
+      };
+    case GET_RANKING:
+      return {
+        ...state,
+        ranking: payload
       };
     case LOADING:
       return {

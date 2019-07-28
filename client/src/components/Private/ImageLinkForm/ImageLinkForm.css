@@ -28,8 +28,16 @@
   letter-spacing: 0.1rem;
   background-color: #d56c2c;
   font-family: "Bungee";
+  border: none;
 }
 
+.ImageLinkForm-form button:active,
+.ImageLinkForm-form button:focus,
 .ImageLinkForm-form button:hover {
   background-color: #aa4100;
+  outline: none;
+}
+
+.ImageLinkForm-loader {
+  max-width: 40px;
 }

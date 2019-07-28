@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+// Actions
+import { getRanking } from "../../../actions/authActions";
+import isEmpty from "../../../utils/isEmpty";
 import "./Ranking.css";
 
-const Ranking = () => {
+const Ranking = ({ auth, getRanking }) => {
+  const { ranking } = auth;
+  let names, scores;
+
+  useEffect(() => {
+    if (isEmpty(ranking)) getRanking(10);
+  }, [ranking, getRanking]);
+
+  if (!isEmpty(ranking)) {
+    names = ranking.map(user => <li key={user.id}>{user.name}</li>);
+    scores = ranking.map(score => <li key={score.id}>{score.entries}</li>);
+  }
   return (
     <>
       <div className="Ranking">
@@ -12,32 +27,10 @@ const Ranking = () => {
         </div>
         <div className="row">
           <div className="col-8">
-            <ul>
-              <li className="first">1. Eric Puskas</li>
-              <li className="second">2. Mary Johnson </li>
-              <li className="third">3. John Dwayne</li>
-              <li>4. George Bush</li>
-              <li>5. Michael Jackson </li>
-              <li>6. Nathan Smith</li>
-              <li>7. Sally Sanders</li>
-              <li>8. Sandra Borne</li>
-              <li>9. Paula Netherblack</li>
-              <li>10. Bruce Wayne</li>
-            </ul>
+            <ul>{names}</ul>
           </div>
           <div className="col-4">
-            <ul id="score">
-              <li className="first">256</li>
-              <li className="second">155 </li>
-              <li className="third">134 </li>
-              <li>115 </li>
-              <li>100 </li>
-              <li>76 </li>
-              <li>73 </li>
-              <li>53 </li>
-              <li>42 </li>
-              <li>33 </li>
-            </ul>
+            <ul id="score">{scores}</ul>
           </div>
         </div>
       </div>
@@ -45,4 +38,11 @@ const Ranking = () => {
   );
 };
 
-export default Ranking;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { getRanking }
+)(Ranking);
