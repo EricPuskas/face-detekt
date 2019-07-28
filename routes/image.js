@@ -6,6 +6,10 @@ const passport = require("passport");
 // @route   PUT api/image/:id
 // @desc    Detect Faces in image.
 // @access  Public
-router.post("/:id", detectFaces);
+router.post(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  detectFaces
+);
 
 module.exports = router;
