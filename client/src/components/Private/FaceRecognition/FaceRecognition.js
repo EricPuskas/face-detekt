@@ -6,6 +6,7 @@ const FaceRecognition = ({ error, imageUrl, boxes, loading }) => {
   return (
     <div className="FaceRecognition center">
       <div className="FaceRecognition-img-container">
+        <img id="inputimage" alt="" src={imageUrl} width="500px" heigh="auto" />
         {loading ? (
           <img
             src={Loader}
@@ -14,28 +15,20 @@ const FaceRecognition = ({ error, imageUrl, boxes, loading }) => {
           />
         ) : (
           <>
-            <img
-              id="inputimage"
-              alt=""
-              src={imageUrl}
-              width="500px"
-              heigh="auto"
-            />
-            {!error &&
-              boxes.map(box => {
-                return (
-                  <div
-                    key={box.topRow}
-                    className="bounding-box"
-                    style={{
-                      top: box.topRow,
-                      right: box.rightCol,
-                      bottom: box.bottomRow,
-                      left: box.leftCol
-                    }}
-                  />
-                );
-              })}
+            {boxes.map(box => {
+              return (
+                <div
+                  key={box.topRow}
+                  className="bounding-box"
+                  style={{
+                    top: box.topRow,
+                    right: box.rightCol,
+                    bottom: box.bottomRow,
+                    left: box.leftCol
+                  }}
+                />
+              );
+            })}
           </>
         )}
       </div>

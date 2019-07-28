@@ -23,4 +23,8 @@
 
 .FaceRecognition-img-container .FaceRecognition-loader {
   max-width: 100px;
+  position: absolute;
+  top: 30%;
+  right: 190px;
+  top: 100px;
 }
