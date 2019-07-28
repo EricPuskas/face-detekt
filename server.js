@@ -15,7 +15,6 @@ const profile = require("./routes/profile");
 const image = require("./routes/image");
 
 const app = express();
-app.use(morgan("combined"));
 app.use(helmet());
 app.use(compression());
 app.use(cors());
@@ -45,6 +44,8 @@ if (NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+} else {
+  app.use(morgan("combined"));
 }
 
 // Listen to Server
