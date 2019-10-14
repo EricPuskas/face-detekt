@@ -32,7 +32,7 @@ const Dashboard = ({
   const { user } = auth;
   const { data, loading } = image;
 
-  document.title = `GetFace - Welcome ${user.name}`;
+  document.title = `FaceDetekt - Welcome ${user.name}`;
 
   const handleSubmit = e => {
     e.preventDefault();

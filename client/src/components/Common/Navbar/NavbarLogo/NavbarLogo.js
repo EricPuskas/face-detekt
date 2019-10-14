@@ -7,7 +7,7 @@ const NavbarLogo = () => {
     <div className="NavbarLogo">
       <Link to="/">
         <img
-          src="https://res.cloudinary.com/zenipsstudio/image/upload/v1564154569/logo_1.png"
+          src="https://res.cloudinary.com/zenipsstudio/image/upload/v1571033925/logo_3.png"
           className="NavbarLogo-img"
           alt="Logo"
         />{" "}

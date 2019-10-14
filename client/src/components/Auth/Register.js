@@ -5,7 +5,7 @@ import Input from "../Common/Input";
 import useInputState from "../../hooks/useInputState";
 
 const Register = ({ error, register, clearErrors, loading }) => {
-  document.title = "GetFace - Register";
+  document.title = "FaceDetekt - Register";
 
   const [name, setName] = useInputState("");
   const [email, setEmail] = useInputState("");

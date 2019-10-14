@@ -4,7 +4,7 @@ import Main from "./Main";
 import Ranking from "../../Private/Ranking/Ranking";
 
 const Landing = () => {
-  document.title = "GetFace - Home";
+  document.title = "FaceDetekt - Home";
   return (
     <div className="Landing center">
       <div className="row center">

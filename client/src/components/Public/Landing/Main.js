@@ -9,7 +9,7 @@ const Main = () => {
           <h1>Face Detection App</h1>
           <div className="Landing-img-container">
             <img
-              alt={"Face Detection - GetFace App"}
+              alt={"Face Detection - Face Detekt App"}
               src={
                 "https://res.cloudinary.com/zenipsstudio/image/upload/v1564148505/banner_opt_2.png"
               }
